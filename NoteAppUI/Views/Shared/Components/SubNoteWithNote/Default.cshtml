@@ -1,0 +1,15 @@
+﻿@using NoteAppUI.Models.ViewModel
+@model List<SubNoteViewModel>
+
+
+@foreach (var item in Model)
+{
+
+    if (item.IsDeleted == false)
+    {
+        <ul>
+            <li><small class="text-muted">@item.Description</small></li>
+        </ul>
+    }
+
+}

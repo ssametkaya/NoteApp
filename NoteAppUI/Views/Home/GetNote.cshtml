@@ -1,0 +1,27 @@
+﻿@using NoteAppUI.Models.ViewModel
+@model NoteViewModel
+@{
+    ViewData["Title"] = "GetNote";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-center">
+    <div class="card-header">
+        Not
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Description</p>
+        <a href="/Home/UpdateNote/@Model.Id" class="btn btn-outline-warning btn-sm">Notu Düzenle</a>
+        <a href="/Home/AddSubNote/@Model.Id" class="btn btn-outline-success btn-sm">AltNot Ekle</a>
+        <a href="/Home/DeleteNote/@Model.Id" class="btn btn-outline-danger btn-sm">Sil</a>
+    </div>
+    <div class="card-footer text-muted">
+        @Model.CreatedDate.ToString("dd/MM/yyyy HH:mm")
+    </div>
+
+    @await Component.InvokeAsync("SubNotesTable",new{id=Model.Id})
+</div>
+
+
+

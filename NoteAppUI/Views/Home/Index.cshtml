@@ -1,0 +1,34 @@
+﻿@using NoteAppUI.Models.ViewModel
+@model List<NoteViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="page-content container note-has-grid">
+    <div class="tab-content bg-transparent">
+        <div id="note-full-container" class="note-has-grid row">
+            @foreach (var item in Model)
+            {
+
+                if (item.IsDeleted == false)
+                {
+                    <div class="col-md-4 single-note-item all-category" style="">
+                        <div class="card card-body">
+                            <span class="side-stick"></span>
+                            <a href="/Home/GetNote/@item.Id"><h5 class="note-title text-truncate w-75 mb-0">@item.Title</h5></a>
+                            <p class="note-inner-content text-muted">@item.Description</p>
+                            <div class="note-content">
+
+                                @await Component.InvokeAsync("SubNoteWithNote",new{id=item.Id})
+                            </div>
+                            <div class="d-flex align-items-center">
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

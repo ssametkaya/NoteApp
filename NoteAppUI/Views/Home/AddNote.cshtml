@@ -1,0 +1,37 @@
+﻿@using NoteAppUI.Models.ViewModel
+@model NoteViewModel
+@{
+    ViewData["Title"] = "AddNote";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h3>Not Ekle</h3>
+
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert">
+    </div>
+    <div class="container mt-2">
+        <form asp-action="AddNote" asp-controller="Home" method="post">
+            <div class="form-label">
+                <label>Başlık:</label>
+                <input type="text" asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text text-danger"></span>
+            </div>
+            <div class="form-label">
+                <label>Açıklama</label>
+                <input type="text" asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text text-danger"></span>
+            </div>
+            <div class="form-label">
+                <button class="btn btn-primary" type="submit">Kaydet</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
